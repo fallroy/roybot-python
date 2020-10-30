@@ -1,4 +1,5 @@
 import logging
+import os
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -10,8 +11,8 @@ from linebot.models import (
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
-line_bot_api = LineBotApi(access_token)
-handler = WebhookHandler("3181bcb492171200e04e398f513610b3")
+line_bot_api = LineBotApi(os.getenv('ACCESS_TOKEN'))
+handler = WebhookHandler(os.getenv('SECRET'))
 
 
 def lambda_handler(event, content):
