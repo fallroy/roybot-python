@@ -8,6 +8,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     TextSendMessage,
 )
+from service.finance import rp
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
@@ -46,6 +47,8 @@ def execute_type(message_type, reply_token, message):
 
 
 def text_type(reply_token, message):
+    if message == 'rp':
+        message = rp()
     line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
 
 
