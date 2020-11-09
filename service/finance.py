@@ -11,14 +11,14 @@ def rp():
     tr1 = body.tr
     tr2 = tr1.next_sibling.next_sibling
 
-    result = "{0}:{1} {2} {3}\n{4}:{5} {6} {7}" \
+    result = "{0}: {1} ({2} {3})\n{4}: {5} ({6} {7})" \
         .format(tr1.th.a.string,
                 tr1.td.string,
-                tr1.td.next_sibling.next_sibling.i.string,
+                "▼" if tr1.td.next_sibling.next_sibling.i.string == "跌" else "▲",
                 tr1.td.next_sibling.next_sibling.next_sibling.next_sibling.span.string,
                 tr2.th.a.string,
                 tr2.td.string,
-                tr2.td.next_sibling.next_sibling.i.string,
+                "▼" if tr2.td.next_sibling.next_sibling.i.string == "跌" else "▲",
                 tr2.td.next_sibling.next_sibling.next_sibling.next_sibling.span.string)
 
     return result

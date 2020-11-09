@@ -9,6 +9,7 @@ from linebot.models import (
     TextSendMessage,
 )
 from service.finance import rp
+from service.ptt_option import op, analysis
 
 logger = logging.getLogger()
 logger.setLevel(logging.ERROR)
@@ -49,6 +50,13 @@ def execute_type(message_type, reply_token, message):
 def text_type(reply_token, message):
     if message == 'rp':
         message = rp()
+    if message == 'op':
+        message = op()
+    if message == 'opa':
+        message = analysis()
+    if message == 'opf':
+        message = rp()
+
     line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
 
 
